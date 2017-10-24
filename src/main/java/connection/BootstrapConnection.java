@@ -64,7 +64,7 @@ public class BootstrapConnection {
         }
 
         // Communicate with bootstrap server
-        String bsIPAddress = properties.getProperty("bs.host");
+        String bsIPAddress = properties.getProperty("bs.ipAddress");
         int bsPort = Integer.parseInt(properties.getProperty("bs.port"));
         Connection connection = new Connection();
         response = connection.send(message, bsIPAddress, bsPort);

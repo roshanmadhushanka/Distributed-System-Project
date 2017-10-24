@@ -1,5 +1,7 @@
 package sys;
 
+import connection.Socket;
+
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -24,7 +26,7 @@ public class Listener extends Thread {
     public void run() {
         System.out.println("Listening to " + port);
         try {
-            socket = new DatagramSocket(port);
+            socket = Socket.getSocket();
         } catch (SocketException e) {
             e.printStackTrace();
             System.err.println("Socket exception " + port);

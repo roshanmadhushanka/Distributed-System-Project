@@ -17,7 +17,9 @@ public class FileTable {
         List<String> resultSet = new ArrayList<String>();
         Evaluator evaluator = new Evaluator();
         for(String file: fileList) {
-            System.out.println(evaluator.cosineSimilarity(query, file));
+            if(evaluator.cosineSimilarity(query, file) > 0.5) {
+                resultSet.add(file);
+            }
         }
         return resultSet;
     }

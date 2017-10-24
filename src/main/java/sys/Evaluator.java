@@ -94,8 +94,11 @@ public class Evaluator {
     }
 
     public double cosineSimilarity(String sentence1, String sentence2) {
-        sentence1 = sentence1.replaceAll("[^a-zA-Z0-9]", "");
-        sentence2 = sentence2.replaceAll("[^a-zA-Z0-9]", "");
+        sentence1 = sentence1.toLowerCase();
+        sentence2 = sentence2.toLowerCase();
+
+        sentence1 = sentence1.replaceAll("[^a-zA-Z0-9]", " ");
+        sentence2 = sentence2.replaceAll("[^a-zA-Z0-9]", " ");
 
         List<String> wordVec1 = Arrays.asList(sentence1.split(" "));
         List<String> wordVec2 = Arrays.asList(sentence2.split(" "));

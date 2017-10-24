@@ -1,5 +1,7 @@
 package connection;
 
+import sys.Config;
+
 import java.io.IOException;
 import java.net.*;
 
@@ -23,7 +25,7 @@ public class Connection {
             Send message to the network
          */
 
-        System.out.println("Sending : " + message);
+        System.out.println("Sending : " + message + " to " +ipAddress + " " + port);
         String response = "Error";
 
         byte[] sendData = message.getBytes();
@@ -58,7 +60,6 @@ public class Connection {
 
         return response;
     }
-
 
     public void close() {
         /*

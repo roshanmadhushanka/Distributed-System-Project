@@ -57,7 +57,7 @@ public class Node {
         return false;
     }
 
-    public List<Node> getNeighbours() {
+    public static List<Node> getNeighbours() {
         return neighbours;
     }
 

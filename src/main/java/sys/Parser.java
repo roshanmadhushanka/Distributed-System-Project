@@ -1,9 +1,11 @@
 package sys;
 
 import connection.DSConnection;
+import model.FileTable;
 import model.MessageTable;
 import model.Node;
 import java.net.DatagramPacket;
+import java.util.List;
 
 public class Parser {
     public static void parseResponse(String response) {
@@ -97,7 +99,7 @@ public class Parser {
         // Request parser
         // Received request
         String request = new String(receivePacket.getData(), 0, receivePacket.getLength());
-
+        System.out.println("Request : " + request);
         // Extract sender info
         String senderIPAddress = receivePacket.getAddress().getHostAddress();
         int senderPort = receivePacket.getPort();
@@ -110,9 +112,7 @@ public class Parser {
             // Send leave OK reply
             generateLeaveResponse(message, senderIPAddress, senderPort);
         } else if(message[1].equals("SER")) {
-
-        } else if(message[1].equals("API")) {
-
+            generateSearchResponse(message, senderIPAddress, senderPort);
         }
     }
 
@@ -124,14 +124,16 @@ public class Parser {
         // Create nodes
         Node node1 = new Node(message[3], Integer.parseInt(message[4]));
         Node node2 = new Node(message[5], Integer.parseInt(message[6]));
+        String myIp = Config.get("host");
+        int myPort = Integer.parseInt(Config.get("port"));
 
         // Communicate with network
         DSConnection dsConnection = new DSConnection();
 
-        String response1 = dsConnection.join(node1.getIpAddress(), node1.getPort());
+        String response1 = dsConnection.join(myIp, myPort, node1.getIpAddress(), node1.getPort());
         addAsANeighbour(node1, response1);
 
-        String response2 = dsConnection.join(node2.getIpAddress(), node2.getPort());
+        String response2 = dsConnection.join(myIp, myPort, node2.getIpAddress(), node2.getPort());
         addAsANeighbour(node2, response2);
     }
 
@@ -142,9 +144,11 @@ public class Parser {
 
         // Create node
         Node node = new Node(message[3], Integer.parseInt(message[4]));
+        String myIp = Config.get("host");
+        int myPort = Integer.parseInt(Config.get("port"));
 
         DSConnection dsConnection = new DSConnection();
-        String response = dsConnection.join(node.getIpAddress(), node.getPort());
+        String response = dsConnection.join(myIp, myPort, node.getIpAddress(), node.getPort());
         addAsANeighbour(node, response);
     }
 
@@ -185,7 +189,10 @@ public class Parser {
 
         Node node = new Node(message[3], Integer.parseInt(message[4]));
         DSConnection dsConnection = new DSConnection();
-        String response = dsConnection.leave(node.getIpAddress(), node.getPort());
+        String myIp = Config.get("host");
+        int myPort = Integer.parseInt(Config.get("port"));
+
+        String response = dsConnection.leave(myIp, myPort, node.getIpAddress(), node.getPort());
 
         if(!response.equals("Timeout") && MessageTable.validate(response)) {
             String[] responseChunk = response.split(" ");
@@ -206,6 +213,42 @@ public class Parser {
         long timestamp = Long.parseLong(message[message.length - 1]);
         DSConnection dsConnection = new DSConnection();
         dsConnection.leaveResponse(ipAddress, port, timestamp, 0);
+    }
+
+    private static void generateSearchResponse(String[] message, String ipAddress, int port) {
+        /*
+            Generate search
+         */
+
+        String fileName = message[5];
+
+        int hopsCount = Integer.parseInt(message[4]);
+        String originalReceiverIp = message[2];
+        int originalReceiverPort = Integer.parseInt(message[3]);
+
+        long timestamp = Long.parseLong(message[message.length-1]);
+        if(hopsCount > 0) {
+            List<String> resultSet = FileTable.search(fileName);
+            if(resultSet.size() > 0) {
+                // Generate response with results
+                DSConnection dsConnection = new DSConnection();
+                dsConnection.searchResponse(originalReceiverIp, originalReceiverPort, hopsCount, resultSet, timestamp);
+            } else if(Node.getNeighbours().size() > 0){
+                hopsCount -= 1;
+                List<Node> neighbours = Node.getNeighbours();
+                for(Node node: neighbours) {
+                    DSConnection dsConnection = new DSConnection();
+                    dsConnection.forward(originalReceiverIp, originalReceiverPort, hopsCount, fileName, timestamp, node.getIpAddress(), node.getPort());
+                }
+            } else {
+                DSConnection dsConnection = new DSConnection();
+                dsConnection.searchResponse(originalReceiverIp, originalReceiverPort, hopsCount, null, timestamp);
+            }
+        } else {
+            DSConnection dsConnection = new DSConnection();
+            dsConnection.searchResponse(originalReceiverIp, originalReceiverPort, hopsCount, null, timestamp);
+        }
+
     }
 
 
