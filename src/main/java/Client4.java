@@ -1,10 +1,27 @@
 import connection.BootstrapConnection;
+import connection.DSConnection;
 import model.FileTable;
+import model.Node;
 import sys.Config;
 import sys.Listener;
 import sys.Parser;
+import java.sql.Timestamp;
 
 public class Client4 {
+    private static void search(String fileName, int hopCount) {
+        /*
+            Simulate search
+         */
+        String host = Config.get("host");
+        int port = Integer.parseInt(Config.get("port"));
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        for(Node node: Node.getNeighbours()) {
+            DSConnection dsConnection = new DSConnection();
+            dsConnection.search(host, port, hopCount, fileName, timestamp.getTime(), node.getIpAddress(), node.getPort());
+            hopCount--;
+        }
+    }
+
     public static void main(String[] args) {
         String name = "Lakmal";
         String host = "localhost";

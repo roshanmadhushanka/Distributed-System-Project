@@ -1,21 +1,15 @@
 package sys;
 
 import connection.Socket;
-
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.SocketException;
 
 public class Listener extends Thread {
-    private static Listener listener;
     private boolean listening;
     private int port;
     DatagramSocket socket = null;
-
-    public static Listener getListener() {
-        return null;
-    }
 
     public Listener(int port) {
         this.listening = true;

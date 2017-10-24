@@ -1,7 +1,5 @@
 package connection;
 
-import sys.Config;
-
 import java.io.IOException;
 import java.net.*;
 

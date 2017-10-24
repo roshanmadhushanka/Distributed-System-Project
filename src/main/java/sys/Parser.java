@@ -2,7 +2,6 @@ package sys;
 
 import connection.DSConnection;
 import model.*;
-
 import java.net.DatagramPacket;
 import java.util.List;
 
@@ -129,9 +128,11 @@ public class Parser {
         // Communicate with network
         DSConnection dsConnection = new DSConnection();
 
+        // Join to first node
         String response1 = dsConnection.join(myIp, myPort, node1.getIpAddress(), node1.getPort());
         addAsANeighbour(node1, response1);
 
+        // Join to second node
         String response2 = dsConnection.join(myIp, myPort, node2.getIpAddress(), node2.getPort());
         addAsANeighbour(node2, response2);
     }
@@ -147,6 +148,8 @@ public class Parser {
         int myPort = Integer.parseInt(Config.get("port"));
 
         DSConnection dsConnection = new DSConnection();
+
+        // Join to node
         String response = dsConnection.join(myIp, myPort, node.getIpAddress(), node.getPort());
         addAsANeighbour(node, response);
     }
@@ -165,7 +168,9 @@ public class Parser {
                 Node.addNeighbour(node);
             }
 
+            // Parse response
             Parser.parseResponse(response);
+
         } else {
             System.out.println(node.getIpAddress() + " " + node.getPort() + " is not reachable");
         }
@@ -198,12 +203,14 @@ public class Parser {
         String myIp = Config.get("host");
         int myPort = Integer.parseInt(Config.get("port"));
 
+        // Generate leave response
         String response = dsConnection.leave(myIp, myPort, node.getIpAddress(), node.getPort());
 
         if(!response.equals("Timeout") && MessageTable.validate(response)) {
             String[] responseChunk = response.split(" ");
 
             if(responseChunk[2].equals("0")) {
+                // Remove node from neighbours
                 Node.removeNeighbour(node.getIpAddress(), node.getPort());
             }
         } else {

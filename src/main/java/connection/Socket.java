@@ -1,7 +1,6 @@
 package connection;
 
 import sys.Config;
-
 import java.net.DatagramSocket;
 import java.net.SocketException;
 

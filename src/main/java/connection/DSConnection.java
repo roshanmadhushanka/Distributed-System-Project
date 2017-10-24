@@ -2,7 +2,6 @@ package connection;
 
 import model.MessageTable;
 import sys.Config;
-
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -99,7 +98,7 @@ public class DSConnection {
         // Format length suffix to four character string
         String lengthPrefix = String.format("%04d", messageLength);
 
-        // Add length suffix in front of the message;
+        // Add length suffix in front of the message
         message = lengthPrefix + " " + message;
 
         // Communicate with the network
@@ -116,8 +115,14 @@ public class DSConnection {
         // Generate message
         String message = "SER " + myIp + " " + String.valueOf(myPort) + " " + String.valueOf(hops) + " " + fileName +
                 " " + String.valueOf(timestamp);
+
+        // Message length with string length suffix
         int messageLength = message.length() + 5;
+
+        // Format length suffix to four character string
         String lengthPrefix = String.format("%04d", messageLength);
+
+        // Add length suffix in front of the message
         message = lengthPrefix + " " + message;
 
         // Put message in MessageTable for future validation
@@ -141,8 +146,14 @@ public class DSConnection {
         // Generate message
         String message = "SER " + myIp + " " + String.valueOf(myPort) + " " + String.valueOf(hops) + " " + fileName +
                 " " + String.valueOf(timestamp);
+
+        // Message length with string length suffix
         int messageLength = message.length() + 5;
+
+        // Format length suffix to four character string
         String lengthPrefix = String.format("%04d", messageLength);
+
+        // Add length suffix in front of the message
         message = lengthPrefix + " " + message;
 
         // Communicate with the network
@@ -177,9 +188,16 @@ public class DSConnection {
             }
         }
 
+        // Add timestamp to identify the response
         message += " " + String.valueOf(timestamp);
+
+        // Message length with string length suffix
         int messageLength = message.length() + 5;
+
+        // Format length suffix to four character string
         String lengthPrefix = String.format("%04d", messageLength);
+
+        // Add length suffix in front of the message
         message = lengthPrefix + " " + message;
 
         // Put message in MessageTable for future validation

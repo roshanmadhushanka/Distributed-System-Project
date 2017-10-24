@@ -5,7 +5,6 @@ import model.Node;
 import sys.Config;
 import sys.Listener;
 import sys.Parser;
-
 import java.sql.Timestamp;
 
 public class Client3 {
@@ -21,7 +20,6 @@ public class Client3 {
             dsConnection.search(host, port, hopCount, fileName, timestamp.getTime(), node.getIpAddress(), node.getPort());
             hopCount--;
         }
-
     }
 
     public static void main(String[] args) {

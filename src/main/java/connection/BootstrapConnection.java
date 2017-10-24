@@ -9,6 +9,7 @@ public class BootstrapConnection {
         /*
             Register to the bootstrap server
          */
+
         String response = "Error";
 
         // Generate message
@@ -18,7 +19,7 @@ public class BootstrapConnection {
         message = length + " " + message;
 
         // Get bootstrap server info
-        Properties properties = null;
+        Properties properties;
         try {
             properties = Configuration.getProperties();
         } catch (IOException e) {
@@ -30,13 +31,19 @@ public class BootstrapConnection {
         String bsIPAddress = properties.getProperty("bs.ipAddress");
         int bsPort = Integer.parseInt(properties.getProperty("bs.port"));
         int noOfMaxAttempts = Integer.parseInt(properties.getProperty("connection.noOfMaxAttempts"));
+
+        // Initiate connection
         Connection connection = new Connection();
+
+        // Retry for failure attempts
         for(int i=0; i<noOfMaxAttempts; i++) {
             // Retry to send
             response = connection.send(message, bsIPAddress, bsPort);
             if(!response.equals("Timeout"))
                 break;
         }
+
+        // End connection
         connection.close();
 
         return response;
@@ -46,6 +53,7 @@ public class BootstrapConnection {
         /*
             Unregister from bootstrap server
          */
+
         String response = "Error";
 
         // Generate message
