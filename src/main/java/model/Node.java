@@ -60,4 +60,13 @@ public class Node {
     public List<Node> getNeighbours() {
         return neighbours;
     }
+
+    public void describe() {
+        // Debugging purpose only
+        System.out.println("----------Node----------");
+        System.out.println("IP address : " + ipAddress);
+        System.out.println("Port       : " + port);
+        System.out.println("------------------------");
+    }
+
 }

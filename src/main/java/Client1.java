@@ -19,6 +19,9 @@ public class Client1 {
         Listener listener = new Listener(port);
         listener.start();
 
+        bootstrapConnection.unreg("localhost", port, name);
+        listener.close();
+
 
     }
 }
