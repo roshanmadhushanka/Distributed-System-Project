@@ -1,10 +1,8 @@
 package sys;
 
 import connection.DSConnection;
-import model.FileTable;
-import model.ForwardTable;
-import model.MessageTable;
-import model.Node;
+import model.*;
+
 import java.net.DatagramPacket;
 import java.util.List;
 
@@ -228,35 +226,58 @@ public class Parser {
             Generate search
          */
 
+        // Extract meta data from message
         String fileName = message[5];
-
         int hopsCount = Integer.parseInt(message[4]);
-
         String originalReceiverIp = message[2];
         int originalReceiverPort = Integer.parseInt(message[3]);
         long timestamp = Long.parseLong(message[message.length-1]);
 
         if(hopsCount > 0) {
+            // Request is under given hop limit
+
+            // Search for given file within the node
             List<String> resultSet = FileTable.search(fileName);
+
             if(resultSet.size() > 0) {
-                // Generate response with results
-                DSConnection dsConnection = new DSConnection();
-                dsConnection.searchResponse(originalReceiverIp, originalReceiverPort, hopsCount, resultSet, timestamp);
+                // This node has the requested file. Generate response with results
+
+                if(!ResponseTable.isResponded(timestamp, fileName)) {
+                    // Avoid initiating multiple responses for same request that comes through different neighbours
+
+                    DSConnection dsConnection = new DSConnection();
+                    dsConnection.searchResponse(originalReceiverIp, originalReceiverPort, hopsCount, resultSet, timestamp);
+                    ResponseTable.add(timestamp, fileName, new Node(originalReceiverIp, originalReceiverPort));
+                }
             } else if(Node.getNeighbours().size() > 0){
-                hopsCount--;
+                // This node does not have requested file and has neighbours
+                // Decrement hop count and forward to neighbours
+
+                //hopsCount--;
+                // Get neighbour list
                 List<Node> neighbours = Node.getNeighbours();
+
                 for(Node node: neighbours) {
+                    // Iterate through neighbours and forward request
+
                     if(!ForwardTable.isForwarded(timestamp, fileName)) {
+                        // If request has not already forwarded from your node
+
+                        hopsCount--;
                         DSConnection dsConnection = new DSConnection();
                         dsConnection.forward(originalReceiverIp, originalReceiverPort, hopsCount, fileName, timestamp, node.getIpAddress(), node.getPort());
                         ForwardTable.add(timestamp, fileName, node);
                     }
                 }
             } else {
+                // Node does not have neighbours
+
                 DSConnection dsConnection = new DSConnection();
                 dsConnection.searchResponse(originalReceiverIp, originalReceiverPort, hopsCount, null, timestamp);
             }
         } else {
+            // Maximum hop limit exceeded
+
             DSConnection dsConnection = new DSConnection();
             dsConnection.searchResponse(originalReceiverIp, originalReceiverPort, hopsCount, null, timestamp);
         }
