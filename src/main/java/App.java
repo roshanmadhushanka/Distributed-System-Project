@@ -4,6 +4,8 @@ import model.FileTable;
 import sys.Listener;
 import sys.Parser;
 
+import java.util.HashMap;
+
 public class App {
     public static void main(String[] args) {
 //        FileTable.add("Adventures of Tintin");
@@ -26,7 +28,12 @@ public class App {
 //        FileTable.add("Modern Family");
 //        FileTable.add("American Idol");
 //        FileTable.add("Hacking for Dummies");
-
+        HashMap<String[], String> map = new HashMap<String[], String>();
+        String[] vec = new String[2];
+        vec[0] = "a";
+        vec[1] = "b";
+        map.put(vec, "Roshan");
+        System.out.println(map.get(vec));
 
     }
 }

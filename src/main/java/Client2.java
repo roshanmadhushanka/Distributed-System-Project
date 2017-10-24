@@ -6,12 +6,13 @@ import sys.Parser;
 
 public class Client2 {
     public static void main(String[] args) {
-        String name = "Madhushanka";
+        String name = "Eranga";
+        String host = "localhost";
         int port = 55557;
 
         // Setup configuration
         Config.put("name", name);
-        Config.put("host", "localhost");
+        Config.put("host", host);
         Config.put("port", String.valueOf(port));
 
         // Add files to system
@@ -20,11 +21,8 @@ public class Client2 {
         FileTable.add("Lady Gaga");
         FileTable.add("Twilight");
         FileTable.add("Windows 8");
-        FileTable.add("Mission Impossible");
-        FileTable.add("Turn Up The Music");
-        FileTable.add("Super Mario");
-        FileTable.add("American Pickers");
 
+        // Connect to the network
         BootstrapConnection bootstrapConnection = new BootstrapConnection();
         bootstrapConnection.unreg("localhost", port, name);
         String response = bootstrapConnection.reg("localhost", port, name);

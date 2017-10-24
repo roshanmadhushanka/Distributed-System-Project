@@ -2,6 +2,7 @@ package sys;
 
 import connection.DSConnection;
 import model.FileTable;
+import model.ForwardTable;
 import model.MessageTable;
 import model.Node;
 import java.net.DatagramPacket;
@@ -112,7 +113,7 @@ public class Parser {
             // Send leave OK reply
             generateLeaveResponse(message, senderIPAddress, senderPort);
         } else if(message[1].equals("SER")) {
-            generateSearchResponse(message, senderIPAddress, senderPort);
+            generateSearchResponse(message);
         }
     }
 
@@ -177,7 +178,13 @@ public class Parser {
             Generate response for join request
          */
 
+        // Extract timestamp from original message
         long timestamp = Long.parseLong(message[message.length - 1]);
+
+        // Add neighbour
+        Node.addNeighbour(new Node(message[2], Integer.parseInt(message[3])));
+
+        // Send response to the node
         DSConnection dsConnection = new DSConnection();
         dsConnection.joinResponse(ipAddress, port, timestamp, 0);
     }
@@ -188,6 +195,7 @@ public class Parser {
          */
 
         Node node = new Node(message[3], Integer.parseInt(message[4]));
+
         DSConnection dsConnection = new DSConnection();
         String myIp = Config.get("host");
         int myPort = Integer.parseInt(Config.get("port"));
@@ -215,7 +223,7 @@ public class Parser {
         dsConnection.leaveResponse(ipAddress, port, timestamp, 0);
     }
 
-    private static void generateSearchResponse(String[] message, String ipAddress, int port) {
+    private static void generateSearchResponse(String[] message) {
         /*
             Generate search
          */
@@ -223,10 +231,11 @@ public class Parser {
         String fileName = message[5];
 
         int hopsCount = Integer.parseInt(message[4]);
+
         String originalReceiverIp = message[2];
         int originalReceiverPort = Integer.parseInt(message[3]);
-
         long timestamp = Long.parseLong(message[message.length-1]);
+
         if(hopsCount > 0) {
             List<String> resultSet = FileTable.search(fileName);
             if(resultSet.size() > 0) {
@@ -234,11 +243,14 @@ public class Parser {
                 DSConnection dsConnection = new DSConnection();
                 dsConnection.searchResponse(originalReceiverIp, originalReceiverPort, hopsCount, resultSet, timestamp);
             } else if(Node.getNeighbours().size() > 0){
-                hopsCount -= 1;
+                hopsCount--;
                 List<Node> neighbours = Node.getNeighbours();
                 for(Node node: neighbours) {
-                    DSConnection dsConnection = new DSConnection();
-                    dsConnection.forward(originalReceiverIp, originalReceiverPort, hopsCount, fileName, timestamp, node.getIpAddress(), node.getPort());
+                    if(!ForwardTable.isForwarded(timestamp, fileName)) {
+                        DSConnection dsConnection = new DSConnection();
+                        dsConnection.forward(originalReceiverIp, originalReceiverPort, hopsCount, fileName, timestamp, node.getIpAddress(), node.getPort());
+                        ForwardTable.add(timestamp, fileName, node);
+                    }
                 }
             } else {
                 DSConnection dsConnection = new DSConnection();

@@ -4,11 +4,11 @@ import sys.Config;
 import sys.Listener;
 import sys.Parser;
 
-public class Client1 {
+public class Client5 {
     public static void main(String[] args) {
-        String name = "Roshan";
+        String name = "Vijini";
         String host = "localhost";
-        int port = 55556;
+        int port = 55560;
 
         // Setup configuration
         Config.put("name", name);
@@ -16,11 +16,9 @@ public class Client1 {
         Config.put("port", String.valueOf(port));
 
         // Add files to system
-        FileTable.add("Adventures of Tintin");
-        FileTable.add("Jack and Jill");
-        FileTable.add("Glee");
-        FileTable.add("The_Vampire_Diarie");
-
+        FileTable.add("Hacking for Dummies");
+        FileTable.add("Mission Impossible");
+        FileTable.add("Turn Up The Music");
 
         // Connect to the network
         BootstrapConnection bootstrapConnection = new BootstrapConnection();

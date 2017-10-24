@@ -110,19 +110,18 @@ public class DSConnection {
         return response;
     }
 
-    public String search(String myIp, int myPort, int hops, String fileName, String senderIp, int senderPort) {
+    public String search(String myIp, int myPort, int hops, String fileName, long timestamp, String senderIp, int senderPort) {
         String response;
 
         // Generate message
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         String message = "SER " + myIp + " " + String.valueOf(myPort) + " " + String.valueOf(hops) + " " + fileName +
-                " " + String.valueOf(timestamp.getTime());
+                " " + String.valueOf(timestamp);
         int messageLength = message.length() + 5;
         String lengthPrefix = String.format("%04d", messageLength);
         message = lengthPrefix + " " + message;
 
         // Put message in MessageTable for future validation
-        MessageTable.put(timestamp.getTime(), message);
+        MessageTable.put(timestamp, message);
 
         // Communicate with the network
         Connection connection = new Connection();
