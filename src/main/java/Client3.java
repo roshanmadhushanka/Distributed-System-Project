@@ -52,7 +52,7 @@ public class Client3 {
         Listener listener = new Listener(port);
         listener.start();
 
-        search("The_Vampire", 5);
+        search("The_Vampire", 3);
 
 //        Node node = Node.getNeighbours().get(1);
 //        node.describe();

@@ -12,6 +12,7 @@ public class Client1 {
         /*
             Simulate search
          */
+
         String host = Config.get("host");
         int port = Integer.parseInt(Config.get("port"));
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
@@ -21,6 +22,25 @@ public class Client1 {
             hopCount--;
         }
     }
+
+    private static void leave() {
+        /*
+            Leave from network
+         */
+
+        String name = Config.get("name");
+        String host = Config.get("host");
+        int port = Integer.parseInt(Config.get("port"));
+
+        BootstrapConnection bootstrapConnection = new BootstrapConnection();
+        bootstrapConnection.unreg(host, port, name);
+
+        DSConnection dsConnection = new DSConnection();
+        for(Node node: Node.getNeighbours()) {
+            dsConnection.leave(host, port, node.getIpAddress(), node.getPort());
+        }
+    }
+
 
     public static void main(String[] args) {
         String name = "Roshan";
