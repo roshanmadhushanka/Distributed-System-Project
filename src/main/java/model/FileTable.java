@@ -22,4 +22,17 @@ public class FileTable {
         }
         return resultSet;
     }
+
+    public static void add(List<String> files) {
+        fileList = files;
+    }
+
+    public static void display() {
+        System.out.println("> File Table");
+        System.out.println("------------");
+        for(String file: fileList) {
+            System.out.println(file.replaceAll(" ", "_"));
+        }
+        System.out.println();
+    }
 }

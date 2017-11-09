@@ -53,6 +53,7 @@ public class Connection {
         } catch (SocketException e) {
             System.err.println("Socket exception: Connection.class send");
         } catch (IOException e) {
+            e.printStackTrace();
             System.err.println("IO exception: Connection.class send");
         }
 

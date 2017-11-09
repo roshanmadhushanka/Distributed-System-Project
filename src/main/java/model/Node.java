@@ -58,7 +58,7 @@ public class Node {
     }
 
     public static List<Node> getNeighbours() {
-        return neighbours;
+        return new ArrayList<Node>(neighbours);
     }
 
     public void describe() {

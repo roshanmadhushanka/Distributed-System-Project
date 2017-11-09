@@ -1,8 +1,6 @@
 package connection;
 
 import config.Configuration;
-import java.io.IOException;
-import java.util.Properties;
 
 public class BootstrapConnection {
     public String reg(String ipAddress, int port, String userName) {
@@ -18,19 +16,10 @@ public class BootstrapConnection {
         String length = String.format("%04d", messageLength);
         message = length + " " + message;
 
-        // Get bootstrap server info
-        Properties properties;
-        try {
-            properties = Configuration.getProperties();
-        } catch (IOException e) {
-            System.err.println("IO Exception: BootstrapConnection.class reg");
-            return response;
-        }
-
-        // Communicate with bootstrap server
-        String bsIPAddress = properties.getProperty("bs.ipAddress");
-        int bsPort = Integer.parseInt(properties.getProperty("bs.port"));
-        int noOfMaxAttempts = Integer.parseInt(properties.getProperty("connection.noOfMaxAttempts"));
+        // Bootstrap server parameters
+        String bsIPAddress = Configuration.getBsIpAddress();
+        int bsPort = Configuration.getBsPort();
+        int noOfMaxAttempts = Configuration.getMaxAttempts();
 
         // Initiate connection
         Connection connection = new Connection();
@@ -62,18 +51,9 @@ public class BootstrapConnection {
         String length = String.format("%04d", messageLength);
         message = length + " " + message;
 
-        // Get bootstrap server info
-        Properties properties = null;
-        try {
-            properties = Configuration.getProperties();
-        } catch (IOException e) {
-            System.err.println("IO Exception: BootstrapConnection.class unreg");
-            return response;
-        }
-
         // Communicate with bootstrap server
-        String bsIPAddress = properties.getProperty("bs.ipAddress");
-        int bsPort = Integer.parseInt(properties.getProperty("bs.port"));
+        String bsIPAddress = Configuration.getBsIpAddress();
+        int bsPort = Configuration.getBsPort();
         Connection connection = new Connection();
         response = connection.send(message, bsIPAddress, bsPort);
         connection.close();

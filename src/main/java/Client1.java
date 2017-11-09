@@ -1,11 +1,15 @@
+import config.Configuration;
 import connection.BootstrapConnection;
 import connection.DSConnection;
 import model.FileTable;
 import model.Node;
-import sys.Config;
 import sys.Listener;
 import sys.Parser;
+import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
 
 public class Client1 {
     private static void search(String fileName, int hopCount) {
@@ -13,56 +17,43 @@ public class Client1 {
             Simulate search
          */
 
-        String host = Config.get("host");
-        int port = Integer.parseInt(Config.get("port"));
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        for(Node node: Node.getNeighbours()) {
-            DSConnection dsConnection = new DSConnection();
-            dsConnection.search(host, port, hopCount, fileName, timestamp.getTime(), node.getIpAddress(), node.getPort());
-            hopCount--;
+        if(fileName.equals("n")) {
+            System.out.println("Neighbours");
+            System.out.println("----------");
+            for(Node node: Node.getNeighbours()) {
+                System.out.println(node.getIpAddress() + ":" + node.getPort());
+            }
+        } else {
+            String host = Configuration.getSystemIPAddress();
+            int port = Configuration.getSystemPort();
+
+            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+            for(Node node: Node.getNeighbours()) {
+                DSConnection dsConnection = new DSConnection();
+                dsConnection.search(host, port, hopCount, fileName, timestamp.getTime(), node.getIpAddress(), node.getPort());
+                hopCount--;
+            }
         }
     }
 
-    private static void leave() {
-        /*
-            Leave from network
-         */
+    public static void main(String[] args) throws IOException {
+        // Load configurations
+        Configuration.loadConfigurations();
+        Configuration.display();
 
-        String name = Config.get("name");
-        String host = Config.get("host");
-        int port = Integer.parseInt(Config.get("port"));
+        // Files
+        FileTable.display();
 
-        BootstrapConnection bootstrapConnection = new BootstrapConnection();
-        bootstrapConnection.unreg(host, port, name);
-
-        DSConnection dsConnection = new DSConnection();
-        for(Node node: Node.getNeighbours()) {
-            dsConnection.leave(host, port, node.getIpAddress(), node.getPort());
-        }
-    }
-
-
-    public static void main(String[] args) {
-        String name = "Roshan";
-        String host = "localhost";
-        int port = 55556;
-
-        // Setup configuration
-        Config.put("name", name);
-        Config.put("host", host);
-        Config.put("port", String.valueOf(port));
-
-        // Add files to system
-        FileTable.add("Adventures of Tintin");
-        FileTable.add("Jack and Jill");
-        FileTable.add("Glee");
-        FileTable.add("The_Vampire_Diarie");
-
+        // System parameters
+        String systemName = Configuration.getSystemName();
+        String systemIPAddress = Configuration.getSystemIPAddress();
+        int systemPort = Configuration.getSystemPort();
 
         // Connect to the network
         BootstrapConnection bootstrapConnection = new BootstrapConnection();
-        bootstrapConnection.unreg("localhost", port, name);
-        String response = bootstrapConnection.reg("localhost", port, name);
+        bootstrapConnection.unreg(systemIPAddress, systemPort, systemName);
+
+        String response = bootstrapConnection.reg(systemIPAddress, systemPort, systemName);
         Parser.parseResponse(response);
 
         if(response.equals("Timeout")) {
@@ -71,7 +62,14 @@ public class Client1 {
         }
 
         // Listen to incoming requests
-        Listener listener = new Listener(port);
+        Listener listener = new Listener(systemPort);
         listener.start();
+
+        Scanner scanner = new Scanner(System.in);
+        String input = "";
+        while (true) {
+            input = scanner.nextLine();
+            search(input, 10);
+        }
     }
 }

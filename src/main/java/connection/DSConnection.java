@@ -1,11 +1,53 @@
 package connection;
 
+import config.Configuration;
 import model.MessageTable;
-import sys.Config;
+
 import java.sql.Timestamp;
 import java.util.List;
 
 public class DSConnection {
+
+    public String pulse(String targetIp, int targetPort, long timestamp){
+        String response;
+
+        // System communication parameters
+        String myIp = Configuration.getSystemIPAddress();
+        int myPort = Configuration.getSystemPort();
+
+        // Generate message
+        String message = "PULSE " + timestamp;
+        int messageLength = message.length() + 5;
+        String lengthPrefix = String.format("%04d", messageLength);
+        message = lengthPrefix + " " + message;
+
+        // Communicate with the network
+        Connection connection = new Connection();
+        response = connection.send(message, targetIp, targetPort);
+        connection.close();
+
+        return response;
+    }
+
+    public String pulseResponse(String[] req, String ipAddress, int port) {
+        String message = "PULSE_OK " + req[2];
+
+        // Message length with string length suffix
+        int messageLength = message.length() + 5;
+
+        // Format length suffix to four character string
+        String lengthPrefix = String.format("%04d", messageLength);
+
+        // Add length suffix in front of the message;
+        message = lengthPrefix + " " + message;
+
+        // Communicate with the network
+        Connection connection = new Connection();
+        String response = connection.send(message, ipAddress, port);
+        connection.close();
+
+        return response;
+    }
 
     public String join(String myIp, int myPort, String senderIp, int senderPort) {
         String response;
@@ -172,8 +214,8 @@ public class DSConnection {
         String response;
         String message;
 
-        String myHost = Config.get("host");
-        String myPort = Config.get("port");
+        String myHost = Configuration.getSystemIPAddress();
+        String myPort = String.valueOf(Configuration.getSystemPort());
 
         int status;
         if(resultSet == null) {
@@ -210,8 +252,4 @@ public class DSConnection {
 
         return response;
     }
-
-
-
-
 }

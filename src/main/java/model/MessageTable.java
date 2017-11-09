@@ -11,6 +11,10 @@ public class MessageTable {
     }
 
     public static boolean validate(String responseMessage) {
+        if(responseMessage.equals("Error")) {
+            return false;
+        }
+
         String[] responseChunks = responseMessage.split(" ");
         String responseType = responseChunks[1];
         long responseTimestamp = Long.parseLong(responseChunks[responseChunks.length - 1]);

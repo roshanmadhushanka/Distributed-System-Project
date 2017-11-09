@@ -1,6 +1,7 @@
 package connection;
 
-import sys.Config;
+import config.Configuration;
+
 import java.net.DatagramSocket;
 import java.net.SocketException;
 
@@ -9,7 +10,7 @@ public class Socket {
 
     public static DatagramSocket getSocket() throws SocketException {
         if(socket == null) {
-            socket = new DatagramSocket(Integer.parseInt(Config.get("port")));
+            socket = new DatagramSocket(Configuration.getSystemPort());
         }
         return socket;
     }

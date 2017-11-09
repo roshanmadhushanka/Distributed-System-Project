@@ -1,16 +1,22 @@
 package sys;
 
+import com.sun.org.apache.regexp.internal.RE;
+import config.Configuration;
+import connection.BootstrapConnection;
 import connection.DSConnection;
 import model.*;
 import java.net.DatagramPacket;
+import java.sql.Timestamp;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class Parser {
     public static void parseResponse(String response) {
         // Response parser
         System.out.println("Response : " + response);
-        if(!response.equals("Error")) {
-            String[] message = response.split(" ");
+        String[] message = response.split(" ");
+
+        if(!message[0].equals("Error")) {
             if(message[1].equals("REGOK")) {
                 // Register to bootstrap
                 int value = Integer.parseInt(message[2]);
@@ -86,7 +92,8 @@ public class Parser {
                 }
             } else if(message[1].equals("ERROR")) {
                 // Error
-                System.out.println("Error");
+            } else if(message[1].equals("PULSE")) {
+                // Generate pulse ok
             }
         } else {
             System.err.println("Terminate");
@@ -111,6 +118,8 @@ public class Parser {
             generateLeaveResponse(message, senderIPAddress, senderPort);
         } else if(message[1].equals("SER")) {
             generateSearchResponse(message);
+        } else if(message[1].equals("PULSE")) {
+            generatePulseResponse(message, senderIPAddress, senderPort);
         }
     }
 
@@ -122,8 +131,8 @@ public class Parser {
         // Create nodes
         Node node1 = new Node(message[3], Integer.parseInt(message[4]));
         Node node2 = new Node(message[5], Integer.parseInt(message[6]));
-        String myIp = Config.get("host");
-        int myPort = Integer.parseInt(Config.get("port"));
+        String myIp = Configuration.getSystemIPAddress();
+        int myPort = Configuration.getSystemPort();
 
         // Communicate with network
         DSConnection dsConnection = new DSConnection();
@@ -144,8 +153,8 @@ public class Parser {
 
         // Create node
         Node node = new Node(message[3], Integer.parseInt(message[4]));
-        String myIp = Config.get("host");
-        int myPort = Integer.parseInt(Config.get("port"));
+        String myIp = Configuration.getSystemIPAddress();
+        int myPort = Configuration.getSystemPort();
 
         DSConnection dsConnection = new DSConnection();
 
@@ -200,8 +209,8 @@ public class Parser {
         Node node = new Node(message[3], Integer.parseInt(message[4]));
 
         DSConnection dsConnection = new DSConnection();
-        String myIp = Config.get("host");
-        int myPort = Integer.parseInt(Config.get("port"));
+        String myIp = Configuration.getSystemIPAddress();
+        int myPort = Configuration.getSystemPort();
 
         // Generate leave response
         String response = dsConnection.leave(myIp, myPort, node.getIpAddress(), node.getPort());
@@ -228,6 +237,33 @@ public class Parser {
         dsConnection.leaveResponse(ipAddress, port, timestamp, 0);
     }
 
+    private static void searchInNeighbours(String fileName, long timestamp, int hopsCount, String originalReceiverIp,
+                                           int originalReceiverPort) {
+        List<Node> neighbours = Node.getNeighbours();
+        DSConnection dsConnection = new DSConnection();
+        String response = "";
+        boolean haveNeighbours = false;
+
+        for(Node node: neighbours) {
+            // Iterate through neighbours and forward request
+            int maxAttempts = Configuration.getMaxAttempts();
+
+            if(!ForwardTable.isForwarded(timestamp, fileName)) {
+                // If request has not already forwarded from your node
+
+                hopsCount--;
+                if(hopsCount <= 0) {
+                    // Maximum hop limit exceeded
+                    dsConnection.searchResponse(originalReceiverIp, originalReceiverPort, hopsCount, null, timestamp);
+                    return;
+                }
+
+                dsConnection.forward(originalReceiverIp, originalReceiverPort, hopsCount, fileName, timestamp, node.getIpAddress(), node.getPort());
+                ForwardTable.add(timestamp, fileName, node);
+            }
+        }
+    }
+
     private static void generateSearchResponse(String[] message) {
         /*
             Generate search
@@ -240,57 +276,33 @@ public class Parser {
         int originalReceiverPort = Integer.parseInt(message[3]);
         long timestamp = Long.parseLong(message[message.length-1]);
 
-        if(hopsCount > 0) {
-            // Request is under given hop limit
+        // Search for given file within the node
+        List<String> resultSet = FileTable.search(fileName);
 
-            // Search for given file within the node
-            List<String> resultSet = FileTable.search(fileName);
+        if(resultSet.size() > 0) {
+            // This node has the requested file. Generate response with results
 
-            if(resultSet.size() > 0) {
-                // This node has the requested file. Generate response with results
-
-                if(!ResponseTable.isResponded(timestamp, fileName)) {
-                    // Avoid initiating multiple responses for same request that comes through different neighbours
-
-                    DSConnection dsConnection = new DSConnection();
-                    dsConnection.searchResponse(originalReceiverIp, originalReceiverPort, hopsCount, resultSet, timestamp);
-                    ResponseTable.add(timestamp, fileName, new Node(originalReceiverIp, originalReceiverPort));
-                }
-            } else if(Node.getNeighbours().size() > 0){
-                // This node does not have requested file and has neighbours
-                // Decrement hop count and forward to neighbours
-
-                //hopsCount--;
-                // Get neighbour list
-                List<Node> neighbours = Node.getNeighbours();
-
-                for(Node node: neighbours) {
-                    // Iterate through neighbours and forward request
-
-                    if(!ForwardTable.isForwarded(timestamp, fileName)) {
-                        // If request has not already forwarded from your node
-
-                        hopsCount--;
-                        DSConnection dsConnection = new DSConnection();
-                        dsConnection.forward(originalReceiverIp, originalReceiverPort, hopsCount, fileName, timestamp, node.getIpAddress(), node.getPort());
-                        ForwardTable.add(timestamp, fileName, node);
-                    }
-                }
-            } else {
-                // Node does not have neighbours
-
+            if(!ResponseTable.isResponded(timestamp, fileName)) {
+                // Avoid initiating multiple responses for same request that comes through different neighbours
                 DSConnection dsConnection = new DSConnection();
-                dsConnection.searchResponse(originalReceiverIp, originalReceiverPort, hopsCount, null, timestamp);
+                dsConnection.searchResponse(originalReceiverIp, originalReceiverPort, hopsCount, resultSet, timestamp);
+                ResponseTable.add(timestamp, fileName, new Node(originalReceiverIp, originalReceiverPort));
+                searchInNeighbours(fileName, timestamp, --hopsCount, originalReceiverIp, originalReceiverPort);
             }
+        } else if(Node.getNeighbours().size() > 0){
+            // This node does not have requested file and has neighbours
+            // Decrement hop count and forward to neighbours
+            searchInNeighbours(fileName, timestamp, --hopsCount, originalReceiverIp, originalReceiverPort);
         } else {
-            // Maximum hop limit exceeded
-
+            // Node does not have neighbours
             DSConnection dsConnection = new DSConnection();
             dsConnection.searchResponse(originalReceiverIp, originalReceiverPort, hopsCount, null, timestamp);
         }
 
     }
 
-
-
+    public static void generatePulseResponse(String[] message, String ipAddress, int port) {
+        DSConnection dsConnection = new DSConnection();
+        dsConnection.pulseResponse(message, ipAddress, port);
+    }
 }
