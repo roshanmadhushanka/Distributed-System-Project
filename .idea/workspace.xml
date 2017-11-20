@@ -2,30 +2,46 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="25570e2b-ed58-417c-bff7-7c849d341c48" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/sys/Config.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/App.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/sys/Config.class" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__au_com_bytecode_opencsv_2_4.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_21_0.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_massisframework_j_text_utils_0_3_4.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_lang_commons_lang_2_6.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/model/FileToLocationTable.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/stat/JoinQueryStat.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/stat/LeaveQueryStat.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/stat/SearchQueryStat.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/stat/Statistics.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/Client2.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/Client3.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/Client4.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/Client5.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Client2.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Client3.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Client4.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Client5.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Client1.class" afterPath="$PROJECT_DIR$/target/classes/Client1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Client2.class" afterPath="$PROJECT_DIR$/target/classes/Client2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Client3.class" afterPath="$PROJECT_DIR$/target/classes/Client3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Client4.class" afterPath="$PROJECT_DIR$/target/classes/Client4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Client5.class" afterPath="$PROJECT_DIR$/target/classes/Client5.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/config/Configuration.class" afterPath="$PROJECT_DIR$/target/classes/config/Configuration.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/connection/BootstrapConnection.class" afterPath="$PROJECT_DIR$/target/classes/connection/BootstrapConnection.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/connection/Connection.class" afterPath="$PROJECT_DIR$/target/classes/connection/Connection.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/connection/DSConnection.class" afterPath="$PROJECT_DIR$/target/classes/connection/DSConnection.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/connection/Socket.class" afterPath="$PROJECT_DIR$/target/classes/connection/Socket.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/model/FileTable.class" afterPath="$PROJECT_DIR$/target/classes/model/FileTable.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/model/ForwardTable.class" afterPath="$PROJECT_DIR$/target/classes/model/ForwardTable.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/model/MessageTable.class" afterPath="$PROJECT_DIR$/target/classes/model/MessageTable.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/model/Node.class" afterPath="$PROJECT_DIR$/target/classes/model/Node.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/model/ResponseTable.class" afterPath="$PROJECT_DIR$/target/classes/model/ResponseTable.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/sys/Listener.class" afterPath="$PROJECT_DIR$/target/classes/sys/Listener.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/sys/Parser.class" afterPath="$PROJECT_DIR$/target/classes/sys/Parser.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/dsclient-1.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/target/dsclient-1.0-SNAPSHOT.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/original-dsclient-1.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/target/original-dsclient-1.0-SNAPSHOT.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dsclient.iml" afterPath="$PROJECT_DIR$/dsclient.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Client1.java" afterPath="$PROJECT_DIR$/src/main/java/Client1.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Client2.java" afterPath="$PROJECT_DIR$/src/main/java/Client2.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Client3.java" afterPath="$PROJECT_DIR$/src/main/java/Client3.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Client4.java" afterPath="$PROJECT_DIR$/src/main/java/Client4.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Client5.java" afterPath="$PROJECT_DIR$/src/main/java/Client5.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/config/Configuration.java" afterPath="$PROJECT_DIR$/src/main/java/config/Configuration.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/config/application.properties" afterPath="$PROJECT_DIR$/src/main/java/config/application.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/connection/BootstrapConnection.java" afterPath="$PROJECT_DIR$/src/main/java/connection/BootstrapConnection.java" />
@@ -33,9 +49,16 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/connection/DSConnection.java" afterPath="$PROJECT_DIR$/src/main/java/connection/DSConnection.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/connection/Socket.java" afterPath="$PROJECT_DIR$/src/main/java/connection/Socket.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/model/FileTable.java" afterPath="$PROJECT_DIR$/src/main/java/model/FileTable.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/model/ForwardTable.java" afterPath="$PROJECT_DIR$/src/main/java/model/ForwardTable.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/model/MessageTable.java" afterPath="$PROJECT_DIR$/src/main/java/model/MessageTable.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/model/Node.java" afterPath="$PROJECT_DIR$/src/main/java/model/Node.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/model/ResponseTable.java" afterPath="$PROJECT_DIR$/src/main/java/model/ResponseTable.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/sys/Evaluator.java" afterPath="$PROJECT_DIR$/src/main/java/sys/Evaluator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/sys/Listener.java" afterPath="$PROJECT_DIR$/src/main/java/sys/Listener.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/sys/Parser.java" afterPath="$PROJECT_DIR$/src/main/java/sys/Parser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -59,42 +82,36 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Client1.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Client1.java">
+      <file leaf-file-name="Configuration.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/config/Configuration.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="35" column="9" lean-forward="false" selection-start-line="35" selection-start-column="9" selection-end-line="35" selection-end-column="9" />
+            <state relative-caret-position="915">
+              <caret line="96" column="0" lean-forward="false" selection-start-line="96" selection-start-column="2" selection-end-line="98" selection-end-column="45" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Parser.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/sys/Parser.java">
+      <file leaf-file-name="ForwardTable.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/model/ForwardTable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="250" column="34" lean-forward="false" selection-start-line="250" selection-start-column="34" selection-end-line="250" selection-end-column="34" />
+            <state relative-caret-position="240">
+              <caret line="16" column="9" lean-forward="false" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BootstrapConnection.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/connection/BootstrapConnection.java">
+      <file leaf-file-name="FileToLocationTable.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/model/FileToLocationTable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-65">
-              <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DSConnection.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/connection/DSConnection.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1061">
-              <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="1080">
+              <caret line="75" column="59" lean-forward="false" selection-start-line="75" selection-start-column="59" selection-end-line="75" selection-end-column="59" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2181#2182#0" expanded="true" />
+                <element signature="e#2247#2248#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -102,56 +119,39 @@
       <file leaf-file-name="ResponseTable.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/model/ResponseTable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="21" lean-forward="false" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+            <state relative-caret-position="120">
+              <caret line="8" column="113" lean-forward="false" selection-start-line="8" selection-start-column="113" selection-end-line="8" selection-end-column="113" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FileTable.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/model/FileTable.java">
+      <file leaf-file-name="Parser.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/sys/Parser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="33" column="54" lean-forward="false" selection-start-line="33" selection-start-column="54" selection-end-line="33" selection-end-column="54" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Connection.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/connection/Connection.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+            <state relative-caret-position="307">
+              <caret line="345" column="14" lean-forward="false" selection-start-line="345" selection-start-column="14" selection-end-line="345" selection-end-column="14" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/config/application.properties">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="28" lean-forward="false" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
+            <state relative-caret-position="240">
+              <caret line="16" column="8" lean-forward="false" selection-start-line="16" selection-start-column="8" selection-end-line="20" selection-end-column="21" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Node.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/model/Node.java">
+      <file leaf-file-name="BootstrapConnection.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/connection/BootstrapConnection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="571">
-              <caret line="60" column="45" lean-forward="false" selection-start-line="60" selection-start-column="45" selection-end-line="60" selection-end-column="45" />
-              <folding>
-                <element signature="method#Node#0;class#Node#0" expanded="false" />
-                <element signature="method#contains#0;class#Node#0" expanded="false" />
-                <element signature="e#1401#1402#0" expanded="true" />
-                <element signature="e#1455#1456#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="15">
+              <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -159,8 +159,31 @@
       <file leaf-file-name="MessageTable.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/model/MessageTable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="145">
-              <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+            <state relative-caret-position="585">
+              <caret line="42" column="47" lean-forward="false" selection-start-line="42" selection-start-column="47" selection-end-line="42" selection-end-column="47" />
+              <folding>
+                <element signature="e#1449#1450#0" expanded="true" />
+                <element signature="e#1503#1504#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Statistics.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/stat/Statistics.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="29" column="16" lean-forward="false" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Listener.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/sys/Listener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="480">
+              <caret line="38" column="29" lean-forward="false" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -174,6 +197,17 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>MessageT</find>
+      <find>parse</find>
+      <find>searc</find>
+      <find>Leave</find>
+      <find>Forwa</find>
+      <find>Statis</find>
+      <find>Statistics</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -207,28 +241,33 @@
         <option value="$PROJECT_DIR$/src/main/java/BSConnectTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/Message.java" />
         <option value="$PROJECT_DIR$/src/main/java/sys/API.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/ForwardTable.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/ResponseTable.java" />
         <option value="$PROJECT_DIR$/src/main/java/sys/Evaluator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/sys/Listener.java" />
         <option value="$PROJECT_DIR$/src/main/java/App.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/sys/Config.java" />
-        <option value="$PROJECT_DIR$/src/main/java/connection/Socket.java" />
         <option value="$PROJECT_DIR$/src/main/java/connection/BootstrapConnection.java" />
-        <option value="$PROJECT_DIR$/src/main/java/connection/Connection.java" />
         <option value="$PROJECT_DIR$/src/main/java/Client2.java" />
         <option value="$PROJECT_DIR$/src/main/java/Client3.java" />
         <option value="$PROJECT_DIR$/src/main/java/Client4.java" />
         <option value="$PROJECT_DIR$/src/main/java/Client5.java" />
+        <option value="$PROJECT_DIR$/src/main/java/connection/Connection.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/connection/Socket.java" />
+        <option value="$PROJECT_DIR$/src/main/java/stat/JoinQueryStat.java" />
+        <option value="$PROJECT_DIR$/src/main/java/stat/LeaveQueryStat.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/FileToLocationTable.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/MessageTable.java" />
-        <option value="$PROJECT_DIR$/src/main/java/connection/DSConnection.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/FileTable.java" />
-        <option value="$PROJECT_DIR$/src/main/java/config/Configuration.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/Node.java" />
         <option value="$PROJECT_DIR$/src/main/java/config/application.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/sys/Parser.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/FileTable.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/ResponseTable.java" />
         <option value="$PROJECT_DIR$/src/main/java/Client1.java" />
+        <option value="$PROJECT_DIR$/src/main/java/stat/SearchQueryStat.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/Node.java" />
+        <option value="$PROJECT_DIR$/src/main/java/connection/DSConnection.java" />
+        <option value="$PROJECT_DIR$/src/main/java/stat/Statistics.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/ForwardTable.java" />
+        <option value="$PROJECT_DIR$/src/main/java/sys/Listener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/config/Configuration.java" />
+        <option value="$PROJECT_DIR$/src/main/java/sys/Parser.java" />
       </list>
     </option>
   </component>
@@ -238,10 +277,10 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+  <component name="ProjectFrameBounds" fullScreen="true">
     <option name="y" value="23" />
     <option name="width" value="1680" />
-    <option name="height" value="953" />
+    <option name="height" value="947" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -259,8 +298,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -316,6 +356,14 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="stat" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dsclient" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dsclient" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="sys" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -329,35 +377,10 @@
               <item name="target" type="462c0819:PsiDirectoryNode" />
               <item name="maven-status" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="dsclient" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dsclient" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="maven-status" type="462c0819:PsiDirectoryNode" />
-              <item name="maven-compiler-plugin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dsclient" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dsclient" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="maven-status" type="462c0819:PsiDirectoryNode" />
-              <item name="maven-compiler-plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="compile" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dsclient" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dsclient" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="maven-status" type="462c0819:PsiDirectoryNode" />
-              <item name="maven-compiler-plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="compile" type="462c0819:PsiDirectoryNode" />
-              <item name="default-compile" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
     </panes>
   </component>
@@ -368,16 +391,21 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.537931" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/java/config" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java" />
       <recent name="$PROJECT_DIR$/src/main/java/main" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="model" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/config" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -582,16 +610,20 @@
       <workItem from="1509848238024" duration="5423000" />
       <workItem from="1510136621512" duration="13483000" />
       <workItem from="1510190756324" duration="307000" />
-      <workItem from="1510205738870" duration="6745000" />
+      <workItem from="1510205738870" duration="6988000" />
+      <workItem from="1510250300393" duration="42000" />
+      <workItem from="1510817684969" duration="2025000" />
+      <workItem from="1510884858882" duration="16847000" />
+      <workItem from="1510972260199" duration="10398000" />
+      <workItem from="1511059857760" duration="993000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="105693000" />
+    <option name="totallyTimeSpent" value="136241000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1680" height="1050" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -602,10 +634,10 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32958034" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2937564" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29273286" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26800978" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2741148" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -630,55 +662,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <option name="time" value="6" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/Client1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sys/Evaluator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1605">
-          <caret line="107" column="0" lean-forward="false" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sys/Config.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/ResponseTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="21" lean-forward="false" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/Node.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="59" column="17" lean-forward="false" selection-start-line="59" selection-start-column="17" selection-end-line="59" selection-end-column="17" />
-          <folding>
-            <element signature="method#Node#0;class#Node#0" expanded="false" />
-            <element signature="method#contains#0;class#Node#0" expanded="false" />
-            <element signature="e#1401#1402#0" expanded="true" />
-            <element signature="e#1455#1456#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/MessageTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/model/ForwardTable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -691,9 +679,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="21" lean-forward="false" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -702,7 +688,7 @@
         <state relative-caret-position="30">
           <caret line="2" column="18" lean-forward="false" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <element signature="method#getSocket#0;class#Socket#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -745,9 +731,10 @@
           <caret line="59" column="17" lean-forward="false" selection-start-line="59" selection-start-column="17" selection-end-line="59" selection-end-column="17" />
           <folding>
             <element signature="method#Node#0;class#Node#0" expanded="false" />
+            <element signature="method#addNeighbour#0;class#Node#0" expanded="false" />
+            <element signature="method#removeNeighbour#0;class#Node#0" expanded="false" />
             <element signature="method#contains#0;class#Node#0" expanded="false" />
-            <element signature="e#1401#1402#0" expanded="true" />
-            <element signature="e#1455#1456#0" expanded="true" />
+            <element signature="method#describe#0;class#Node#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -756,7 +743,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#1449#1450#0" expanded="true" />
+            <element signature="e#1503#1504#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -772,9 +762,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="21" lean-forward="false" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -783,7 +771,7 @@
         <state relative-caret-position="30">
           <caret line="2" column="18" lean-forward="false" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <element signature="method#getSocket#0;class#Socket#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -813,32 +801,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/TestApp.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/sys/API.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/App.java" />
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="40" column="21" lean-forward="false" selection-start-line="40" selection-start-column="21" selection-end-line="40" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/connection/Socket.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="69" lean-forward="false" selection-start-line="12" selection-start-column="69" selection-end-line="12" selection-end-column="69" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/ForwardTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sys/Config.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/Client2.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -867,117 +829,215 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
           <caret line="42" column="28" lean-forward="false" selection-start-line="42" selection-start-column="28" selection-end-line="42" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sys/Listener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-21">
-          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sys/Evaluator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-944">
-          <caret line="13" column="15" lean-forward="false" selection-start-line="13" selection-start-column="15" selection-end-line="13" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/config/Configuration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="87" column="0" lean-forward="false" selection-start-line="87" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/FileTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="33" column="54" lean-forward="false" selection-start-line="33" selection-start-column="54" selection-end-line="33" selection-end-column="54" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/Node.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="571">
-          <caret line="60" column="45" lean-forward="false" selection-start-line="60" selection-start-column="45" selection-end-line="60" selection-end-column="45" />
-          <folding>
-            <element signature="method#Node#0;class#Node#0" expanded="false" />
-            <element signature="method#contains#0;class#Node#0" expanded="false" />
-            <element signature="e#1401#1402#0" expanded="true" />
-            <element signature="e#1455#1456#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/config/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="28" lean-forward="false" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/MessageTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/connection/Connection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+        <state relative-caret-position="600">
+          <caret line="41" column="35" lean-forward="false" selection-start-line="41" selection-start-column="35" selection-end-line="41" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/connection/BootstrapConnection.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/connection/Socket.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-65">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+        <state relative-caret-position="105">
+          <caret line="15" column="5" lean-forward="false" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+          <folding>
+            <element signature="method#getSocket#0;class#Socket#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/FileToDestination.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/stat/LeaveQueryStat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="80" column="58" lean-forward="false" selection-start-line="80" selection-start-column="58" selection-end-line="80" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="method#LeaveQueryStat#0;class#LeaveQueryStat#0" expanded="false" />
+            <element signature="method#LeaveQueryStat#1;class#LeaveQueryStat#0" expanded="false" />
+            <element signature="method#display#0;class#LeaveQueryStat#0" expanded="false" />
+            <element signature="method#toString#0;class#LeaveQueryStat#0" expanded="false" />
+            <element signature="method#getData#0;class#LeaveQueryStat#0" expanded="false" />
+            <element signature="method#displayAsTable#0;class#LeaveQueryStat#0" expanded="false" />
+            <element signature="e#2331#2332#0" expanded="false" />
+            <element signature="e#2396#2397#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/stat/JoinQueryStat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="539">
+          <caret line="80" column="56" lean-forward="false" selection-start-line="80" selection-start-column="56" selection-end-line="80" selection-end-column="56" />
+          <folding>
+            <element signature="method#JoinQueryStat#0;class#JoinQueryStat#0" expanded="false" />
+            <element signature="method#JoinQueryStat#1;class#JoinQueryStat#0" expanded="false" />
+            <element signature="method#display#0;class#JoinQueryStat#0" expanded="false" />
+            <element signature="method#toString#0;class#JoinQueryStat#0" expanded="false" />
+            <element signature="method#getData#0;class#JoinQueryStat#0" expanded="false" />
+            <element signature="e#2303#2304#0" expanded="false" />
+            <element signature="e#2366#2367#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sys/Evaluator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-477">
+          <caret line="13" column="15" lean-forward="false" selection-start-line="13" selection-start-column="15" selection-end-line="13" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/config/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/FileTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8">
+          <caret line="18" column="36" lean-forward="false" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/connection/DSConnection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1061">
-          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+        <state relative-caret-position="16">
+          <caret line="106" column="58" lean-forward="false" selection-start-line="106" selection-start-column="58" selection-end-line="106" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/stat/SearchQueryStat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="219" column="50" lean-forward="false" selection-start-line="219" selection-start-column="50" selection-end-line="219" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#481#498#0" expanded="false" />
+            <element signature="method#SearchQueryStat#0;class#SearchQueryStat#0" expanded="false" />
+            <element signature="method#display#0;class#SearchQueryStat#0" expanded="false" />
+            <element signature="method#toString#0;class#SearchQueryStat#0" expanded="false" />
+            <element signature="e#3589#3597#0" expanded="false" />
+            <element signature="e#7748#7749#0" expanded="false" />
+            <element signature="e#7815#7816#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/Node.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="40" column="75" lean-forward="false" selection-start-line="40" selection-start-column="75" selection-end-line="40" selection-end-column="75" />
+          <folding>
+            <element signature="method#Node#0;class#Node#0" expanded="false" />
+            <element signature="method#addNeighbour#0;class#Node#0" expanded="false" />
+            <element signature="method#removeNeighbour#0;class#Node#0" expanded="false" />
+            <element signature="method#contains#0;class#Node#0" expanded="false" />
+            <element signature="method#describe#0;class#Node#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Client1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1545">
+          <caret line="117" column="56" lean-forward="false" selection-start-line="117" selection-start-column="56" selection-end-line="117" selection-end-column="56" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/model/ResponseTable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="21" lean-forward="false" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+        <state relative-caret-position="120">
+          <caret line="8" column="113" lean-forward="false" selection-start-line="8" selection-start-column="113" selection-end-line="8" selection-end-column="113" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Client1.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/sys/Listener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="35" column="9" lean-forward="false" selection-start-line="35" selection-start-column="9" selection-end-line="35" selection-end-column="9" />
+        <state relative-caret-position="480">
+          <caret line="38" column="29" lean-forward="false" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/ForwardTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="9" lean-forward="false" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/MessageTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="42" column="47" lean-forward="false" selection-start-line="42" selection-start-column="47" selection-end-line="42" selection-end-column="47" />
+          <folding>
+            <element signature="e#1449#1450#0" expanded="true" />
+            <element signature="e#1503#1504#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/FileToLocationTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1080">
+          <caret line="75" column="59" lean-forward="false" selection-start-line="75" selection-start-column="59" selection-end-line="75" selection-end-column="59" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2181#2182#0" expanded="true" />
+            <element signature="e#2247#2248#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="8" lean-forward="false" selection-start-line="16" selection-start-column="8" selection-end-line="20" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/stat/Statistics.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="29" column="16" lean-forward="false" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sys/Parser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="250" column="34" lean-forward="false" selection-start-line="250" selection-start-column="34" selection-end-line="250" selection-end-column="34" />
+        <state relative-caret-position="307">
+          <caret line="345" column="14" lean-forward="false" selection-start-line="345" selection-start-column="14" selection-end-line="345" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/config/Configuration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="915">
+          <caret line="96" column="0" lean-forward="false" selection-start-line="96" selection-start-column="2" selection-end-line="98" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/connection/BootstrapConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding />
         </state>
       </provider>

@@ -5,8 +5,15 @@ import config.Configuration;
 import connection.BootstrapConnection;
 import connection.DSConnection;
 import model.*;
+import stat.JoinQueryStat;
+import stat.LeaveQueryStat;
+import stat.SearchQueryStat;
+import stat.Statistics;
+
 import java.net.DatagramPacket;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -57,6 +64,16 @@ public class Parser {
                 }
             } else if(message[1].equals("JOINOK")) {
                 // Join distributed system
+
+
+                // Stat - Begin
+                long timestamp = Long.parseLong(message[message.length-1]);
+                JoinQueryStat joinQueryStat = new JoinQueryStat();
+                joinQueryStat.setReceivedTime(new Timestamp(System.currentTimeMillis()).getTime());
+                joinQueryStat.setSentTime(timestamp);
+                JoinQueryStat.append(joinQueryStat);
+                // Stat - End
+
                 int value = Integer.parseInt(message[2]);
                 if(value == 0) {
                     // Success
@@ -67,11 +84,28 @@ public class Parser {
                 }
             } else if(message[1].equals("LEAVEOK")) {
                 // Leave from distributed system
+
+                // Stat - Begin
+                long timestamp = Long.parseLong(message[message.length-1]);
+                LeaveQueryStat leaveQueryStat = new LeaveQueryStat();
+                leaveQueryStat.setReceivedTime(new Timestamp(System.currentTimeMillis()).getTime());
+                leaveQueryStat.setSentTime(timestamp);
+                LeaveQueryStat.append(leaveQueryStat);
+                // Stat - End
+
                 int value = Integer.parseInt(message[2]);
                 if(value == 0) {
                     // Success
                     System.out.println("Leave DS : Success");
-                } else if(value == 1) {
+
+                    // Extract message info
+                    String ipAddress = message[message.length - 3];
+                    int port = Integer.parseInt(message[message.length - 2]);
+
+                    // Remove neighbour
+                    Node.removeNeighbour(ipAddress, port);
+
+                } else if(value == 9999) {
                     // Fail
                     System.out.println("Leave DS : Fail");
                 }
@@ -84,10 +118,47 @@ public class Parser {
                     // other error
                     System.out.println("Search : Other error");
                 } else if(value == 0) {
+                    // Stat - Begin
+
+                    /*
+                    long timestamp = Long.parseLong(message[message.length-1]);
+                    int hops = Integer.parseInt(message[message.length-2]);
+                    String query = message[message.length-3];
+                    SearchQueryStat searchQueryStat = new SearchQueryStat();
+                    searchQueryStat.setQuery(query);
+                    searchQueryStat.setFileName("<None>");
+                    searchQueryStat.setReceivedTime(new Timestamp(System.currentTimeMillis()).getTime());
+                    searchQueryStat.setSentTime(timestamp);
+                    searchQueryStat.setHopsCount(hops);
+                    SearchQueryStat.append(searchQueryStat);
+                    */
+
+                    // Stat - End
                     // No result
                     System.out.println("Search : No result");
                 } else if (value > 0){
                     // has result
+                    // Stat - Begin
+                    long timestamp = Long.parseLong(message[message.length-1]);
+                    int hops = Integer.parseInt(message[message.length-2]);
+                    String query = message[message.length-3];
+                    SearchQueryStat searchQueryStat = new SearchQueryStat();
+                    searchQueryStat.setQuery(query);
+                    searchQueryStat.setReceivedTime(new Timestamp(System.currentTimeMillis()).getTime());
+                    searchQueryStat.setSentTime(timestamp);
+                    searchQueryStat.setHopsCount(hops);
+
+                    List<String> files = new ArrayList<String>();
+                    Node node = new Node(message[3], Integer.parseInt(message[4]));
+                    for(int i=5; i<message.length-3; i++) {
+                        FileToLocationTable.add(message[i], node);
+                        files.add(message[i]);
+                    }
+
+                    searchQueryStat.setFileName(Arrays.toString(files.toArray()));
+                    SearchQueryStat.append(searchQueryStat);
+                    // Stat - End
+
                     System.out.println("Search : Has result");
                 }
             } else if(message[1].equals("ERROR")) {
@@ -115,11 +186,9 @@ public class Parser {
             generateJoinResponse(message, senderIPAddress, senderPort);
         } else if(message[1].equals("LEAVE")) {
             // Send leave OK reply
-            generateLeaveResponse(message, senderIPAddress, senderPort);
+            generateLeaveResponse(message);
         } else if(message[1].equals("SER")) {
             generateSearchResponse(message);
-        } else if(message[1].equals("PULSE")) {
-            generatePulseResponse(message, senderIPAddress, senderPort);
         }
     }
 
@@ -206,59 +275,76 @@ public class Parser {
             Unregister node from network
          */
 
-        Node node = new Node(message[3], Integer.parseInt(message[4]));
-
         DSConnection dsConnection = new DSConnection();
         String myIp = Configuration.getSystemIPAddress();
         int myPort = Configuration.getSystemPort();
 
-        // Generate leave response
-        String response = dsConnection.leave(myIp, myPort, node.getIpAddress(), node.getPort());
+        for(Node node: Node.getNeighbours()) {
+            // Generate leave response
+            String response = dsConnection.leave(myIp, myPort, node.getIpAddress(), node.getPort());
 
-        if(!response.equals("Timeout") && MessageTable.validate(response)) {
-            String[] responseChunk = response.split(" ");
+            if(!response.equals("Timeout") && MessageTable.validate(response)) {
+                String[] responseChunk = response.split(" ");
 
-            if(responseChunk[2].equals("0")) {
-                // Remove node from neighbours
-                Node.removeNeighbour(node.getIpAddress(), node.getPort());
+                if(responseChunk[2].equals("0")) {
+                    // Remove node from neighbours
+                    Node.removeNeighbour(node.getIpAddress(), node.getPort());
+                }
+            } else {
+                System.out.println(node.getIpAddress() + " " + node.getPort() + " is not reachable");
             }
-        } else {
-            System.out.println(node.getIpAddress() + " " + node.getPort() + " is not reachable");
         }
     }
 
-    private static void generateLeaveResponse(String[] message, String ipAddress, int port) {
+    private static void generateLeaveResponse(String[] message) {
         /*
             Generate response for leave request
          */
 
+        // Retrieve timestamp
         long timestamp = Long.parseLong(message[message.length - 1]);
+        String ipAddress = message[2];
+        int port = Integer.parseInt(message[3]);
+
+        // Remove neighbour
+        Node.removeNeighbour(ipAddress, port);
+
         DSConnection dsConnection = new DSConnection();
         dsConnection.leaveResponse(ipAddress, port, timestamp, 0);
     }
 
     private static void searchInNeighbours(String fileName, long timestamp, int hopsCount, String originalReceiverIp,
                                            int originalReceiverPort) {
-        List<Node> neighbours = Node.getNeighbours();
+
+        /*
+            Search for a file within neighbours
+         */
+        List<Node> neighbours = FileToLocationTable.getLocations(fileName);
+        for(Node node: Node.getNeighbours()) {
+            neighbours.add(node);
+        }
+
         DSConnection dsConnection = new DSConnection();
         String response = "";
         boolean haveNeighbours = false;
 
+        hopsCount--;
         for(Node node: neighbours) {
             // Iterate through neighbours and forward request
             int maxAttempts = Configuration.getMaxAttempts();
 
-            if(!ForwardTable.isForwarded(timestamp, fileName)) {
+            if(!ForwardTable.isForwarded(timestamp, fileName, node.getIpAddress(), node.getPort())) {
                 // If request has not already forwarded from your node
 
-                hopsCount--;
                 if(hopsCount <= 0) {
-                    // Maximum hop limit exceeded
-                    dsConnection.searchResponse(originalReceiverIp, originalReceiverPort, hopsCount, null, timestamp);
+//                    // Maximum hop limit exceeded
+//                    dsConnection.searchResponse(originalReceiverIp, originalReceiverPort, hopsCount, fileName,
+//                            null, timestamp);
                     return;
                 }
 
-                dsConnection.forward(originalReceiverIp, originalReceiverPort, hopsCount, fileName, timestamp, node.getIpAddress(), node.getPort());
+                dsConnection.forward(originalReceiverIp, originalReceiverPort, hopsCount, fileName, timestamp,
+                        node.getIpAddress(), node.getPort());
                 ForwardTable.add(timestamp, fileName, node);
             }
         }
@@ -281,11 +367,11 @@ public class Parser {
 
         if(resultSet.size() > 0) {
             // This node has the requested file. Generate response with results
-
-            if(!ResponseTable.isResponded(timestamp, fileName)) {
+            if(!ResponseTable.isResponded(timestamp, fileName, originalReceiverIp, originalReceiverPort)) {
                 // Avoid initiating multiple responses for same request that comes through different neighbours
                 DSConnection dsConnection = new DSConnection();
-                dsConnection.searchResponse(originalReceiverIp, originalReceiverPort, hopsCount, resultSet, timestamp);
+                dsConnection.searchResponse(originalReceiverIp, originalReceiverPort, hopsCount, fileName, resultSet,
+                        timestamp);
                 ResponseTable.add(timestamp, fileName, new Node(originalReceiverIp, originalReceiverPort));
                 searchInNeighbours(fileName, timestamp, --hopsCount, originalReceiverIp, originalReceiverPort);
             }
@@ -296,13 +382,8 @@ public class Parser {
         } else {
             // Node does not have neighbours
             DSConnection dsConnection = new DSConnection();
-            dsConnection.searchResponse(originalReceiverIp, originalReceiverPort, hopsCount, null, timestamp);
+            dsConnection.searchResponse(originalReceiverIp, originalReceiverPort, hopsCount, fileName,null,
+                    timestamp);
         }
-
-    }
-
-    public static void generatePulseResponse(String[] message, String ipAddress, int port) {
-        DSConnection dsConnection = new DSConnection();
-        dsConnection.pulseResponse(message, ipAddress, port);
     }
 }

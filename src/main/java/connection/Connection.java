@@ -39,7 +39,7 @@ public class Connection {
         try {
             // Send packet
             socket = new DatagramSocket();
-            socket.setSoTimeout(10000);
+            socket.setSoTimeout(100);
             socket.send(sendPacket);
 
             // Receive data

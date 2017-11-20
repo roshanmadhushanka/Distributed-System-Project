@@ -1,5 +1,8 @@
 package model;
 
+import dnl.utils.text.table.TextTable;
+import stat.SearchQueryStat;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +38,7 @@ public class Node {
         }
     }
 
-    public static void removeNeighbour(String host, int port) {
+    public static synchronized void removeNeighbour(String host, int port) {
         int i=0;
         while(i<neighbours.size()) {
             if(neighbours.get(i).ipAddress.equals(host) && neighbours.get(i).port == port) {
@@ -43,7 +46,10 @@ public class Node {
             }
             i++;
         }
-        neighbours.remove(i);
+
+        if(i<neighbours.size()) {
+            neighbours.remove(i);
+        }
     }
 
     public static boolean contains(String host, int port) {
@@ -67,6 +73,23 @@ public class Node {
         System.out.println("IP address : " + ipAddress);
         System.out.println("Port       : " + port);
         System.out.println("------------------------");
+    }
+
+    public static void displayAsTable() {
+        System.out.println("Neighbours");
+        System.out.println("==========");
+        Object[][] data = new Object[neighbours.size()][2];
+        for(int i=0; i<neighbours.size(); i++) {
+            Node node = neighbours.get(i);
+            data[i][0] = node.ipAddress;
+            data[i][1] = node.port;
+        }
+
+        TextTable searchStat = new TextTable(new String[]{ "IP Address", "Port" }, data);
+        searchStat.setAddRowNumbering(true);
+        searchStat.setSort(0);
+        searchStat.printTable();
+        System.out.println();
     }
 
 }

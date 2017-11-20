@@ -2,52 +2,12 @@ package connection;
 
 import config.Configuration;
 import model.MessageTable;
+import stat.Statistics;
 
 import java.sql.Timestamp;
 import java.util.List;
 
 public class DSConnection {
-
-    public String pulse(String targetIp, int targetPort, long timestamp){
-        String response;
-
-        // System communication parameters
-        String myIp = Configuration.getSystemIPAddress();
-        int myPort = Configuration.getSystemPort();
-
-        // Generate message
-        String message = "PULSE " + timestamp;
-        int messageLength = message.length() + 5;
-        String lengthPrefix = String.format("%04d", messageLength);
-        message = lengthPrefix + " " + message;
-
-        // Communicate with the network
-        Connection connection = new Connection();
-        response = connection.send(message, targetIp, targetPort);
-        connection.close();
-
-        return response;
-    }
-
-    public String pulseResponse(String[] req, String ipAddress, int port) {
-        String message = "PULSE_OK " + req[2];
-
-        // Message length with string length suffix
-        int messageLength = message.length() + 5;
-
-        // Format length suffix to four character string
-        String lengthPrefix = String.format("%04d", messageLength);
-
-        // Add length suffix in front of the message;
-        message = lengthPrefix + " " + message;
-
-        // Communicate with the network
-        Connection connection = new Connection();
-        String response = connection.send(message, ipAddress, port);
-        connection.close();
-
-        return response;
-    }
 
     public String join(String myIp, int myPort, String senderIp, int senderPort) {
         String response;
@@ -66,6 +26,10 @@ public class DSConnection {
         Connection connection = new Connection();
         response = connection.send(message, senderIp, senderPort);
         connection.close();
+
+        // Stat - Begin
+        Statistics.incrementSentMessages();
+        // Stat - End
 
         return response;
     }
@@ -97,6 +61,10 @@ public class DSConnection {
         String response = connection.send(message, ipAddress, port);
         connection.close();
 
+        // Stat - Begin
+        Statistics.incrementSentMessages();
+        // Stat - End
+
         return response;
     }
 
@@ -118,6 +86,10 @@ public class DSConnection {
         response = connection.send(message, senderIp, senderPort);
         connection.close();
 
+        // Stat - Begin
+        Statistics.incrementSentMessages();
+        // Stat - End
+
         return response;
     }
 
@@ -130,6 +102,9 @@ public class DSConnection {
         } else {
             return message;
         }
+
+        // Add current nodes details
+        message += Configuration.getSystemIPAddress() + " " + String.valueOf(Configuration.getSystemPort()) + " ";
 
         // Add timestamp to identify the request
         message += timestamp;
@@ -148,6 +123,10 @@ public class DSConnection {
         String response = connection.send(message, ipAddress, port);
         connection.close();
 
+        // Stat - Begin
+        Statistics.incrementSentMessages();
+        // Stat - End
+
         return response;
     }
 
@@ -155,6 +134,7 @@ public class DSConnection {
         String response;
 
         // Generate message
+        fileName = fileName.replaceAll(" ", "_");
         String message = "SER " + myIp + " " + String.valueOf(myPort) + " " + String.valueOf(hops) + " " + fileName +
                 " " + String.valueOf(timestamp);
 
@@ -175,6 +155,10 @@ public class DSConnection {
         response = connection.send(message, senderIp, senderPort);
         connection.close();
 
+        // Stat - Begin
+        Statistics.incrementSentMessages();
+        // Stat - End
+
         return response;
     }
 
@@ -186,6 +170,7 @@ public class DSConnection {
         String response;
 
         // Generate message
+        fileName = fileName.replaceAll(" ", "_");
         String message = "SER " + myIp + " " + String.valueOf(myPort) + " " + String.valueOf(hops) + " " + fileName +
                 " " + String.valueOf(timestamp);
 
@@ -203,10 +188,14 @@ public class DSConnection {
         response = connection.send(message, senderIp, senderPort);
         connection.close();
 
+        // Stat - Begin
+        Statistics.incrementSentMessages();
+        // Stat - End
+
         return response;
     }
 
-    public String searchResponse(String ipAddress, int port, int hops, List<String> resultSet, long timestamp) {
+    public String searchResponse(String ipAddress, int port, int hops, String query, List<String> resultSet, long timestamp) {
         /*
             If current node has requested content
          */
@@ -220,14 +209,16 @@ public class DSConnection {
         int status;
         if(resultSet == null) {
             status = 0;
-            message = "SEROK " + String.valueOf(status);
+            message = "SEROK " + String.valueOf(status) + " " + String.valueOf(hops);
         } else {
             status = resultSet.size();
-            message = "SEROK " + String.valueOf(status) + " " + myHost + " " + myPort + " " +
-                    String.valueOf(hops);
+            message = "SEROK " + String.valueOf(status) + " " + myHost + " " + myPort;
             for(String fileName: resultSet) {
-                message += " " + fileName;
+                message += " " + fileName.replaceAll(" ", "_");
             }
+
+            message += " " + query;
+            message += " " + String.valueOf(hops);
         }
 
         // Add timestamp to identify the response
@@ -249,6 +240,10 @@ public class DSConnection {
         Connection connection = new Connection();
         response = connection.send(message, ipAddress, port);
         connection.close();
+
+        // Stat - Begin
+        Statistics.incrementSentMessages();
+        // Stat - End
 
         return response;
     }

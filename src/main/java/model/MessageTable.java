@@ -39,5 +39,9 @@ public class MessageTable {
         return false;
     }
 
+    public static void clear() {
+        messages = new HashMap<Long, String>();
+    }
+
 
 }

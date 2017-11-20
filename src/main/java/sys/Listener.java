@@ -1,6 +1,8 @@
 package sys;
 
 import connection.Socket;
+import stat.Statistics;
+
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -32,7 +34,11 @@ public class Listener extends Thread {
             DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
             try {
                 socket.receive(receivePacket);
+                // Stat - Begin
+                Statistics.incrementReceivedMessages();
+                // Stat - End
                 Parser.parseRequest(receivePacket);
+                Parser.parseResponse(new String(receivePacket.getData(), 0, receivePacket.getLength()));
             } catch (IOException e) {
                 return;
             }

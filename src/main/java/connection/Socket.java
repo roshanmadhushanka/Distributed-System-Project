@@ -14,6 +14,4 @@ public class Socket {
         }
         return socket;
     }
-
-
 }

@@ -28,6 +28,7 @@ public class Configuration {
 
     // Connection parameters
     private static int maxAttempts;
+    private static int maxHopCount;
 
 
     public static String getSystemIPAddress() {
@@ -78,6 +79,14 @@ public class Configuration {
         Configuration.maxAttempts = maxAttempts;
     }
 
+    public static int getMaxHopCount() {
+        return maxHopCount;
+    }
+
+    public static void setMaxHopCount(int maxHopCount) {
+        Configuration.maxHopCount = maxHopCount;
+    }
+
     public static void loadConfigurations() throws IOException {
         // Setup encryptor to load encrypted content (password)
         StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
@@ -96,14 +105,11 @@ public class Configuration {
         // Set properties
         setSystemName(props.getProperty("server.name"));
         setSystemIPAddress(props.getProperty("server.host"));
-
-//        String host = InetAddress.getLocalHost().getHostAddress();
-//        setSystemIPAddress(host);
-
         setSystemPort(Integer.parseInt(props.getProperty("server.port")));
         setBsIpAddress(props.getProperty("bootstrap.host"));
         setBsPort(Integer.parseInt(props.getProperty("bootstrap.port")));
-        setMaxAttempts(Integer.parseInt(props.getProperty("connection.noOfMaxAttempts")));
+        setMaxAttempts(Integer.parseInt(props.getProperty("connection.maxAttempt")));
+        setMaxHopCount(Integer.parseInt(props.getProperty("connection.maxHopCount")));
 
         // Set files in file table
         String[] files = props.getProperty("files").split(";");
@@ -119,6 +125,7 @@ public class Configuration {
         System.out.println("Server Port    : " + getSystemPort());
         System.out.println("Bootstrap IP   : " + getBsIpAddress());
         System.out.println("Bootstrap Port : " + getBsPort());
+        System.out.println("Max Hop Count  : " + getMaxHopCount());
         System.out.println();
     }
 }
